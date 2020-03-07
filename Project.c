@@ -14,6 +14,7 @@ employee info[1000];
 void AddEmployee(int x);
 void DisplayInfo();
 void DisplayViaID();
+void deleteInfo();
 //Main Program
 int main(){
     int select,n,i=1;
@@ -38,7 +39,7 @@ int main(){
         }else if(select==4){
             //
         }else if(select==5){
-            //
+            deleteInfo();
         }else if(select==6){
             //
         }else if(select==7){
@@ -80,6 +81,28 @@ void DisplayInfo(){
             printf("%s\t%s\t%s\t%s\t\t%s\t%s/%s/%s\t%s\t\t%s\t%s\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9],str[10]);
         }
     printf("------------------------------------------------------------------------------------------------------------\n");
+    fclose(file);
+}
+void deleteInfo()
+{
+    FILE *file;
+    file = fopen("DBemployee.txt","w+");
+    int id;
+    employee data;
+    employee empty;
+    printf("Enter ID that you want to delete: ");
+    scanf("%d",&id);
+    fseek(file,(id-1)*sizeof(employee),SEEK_SET);
+    fread(&data, sizeof(employee),1,file);
+    if(data.id == 0)
+    {
+        printf("This ID doesn't exist.\n");
+    }
+    else
+    {
+        fseek(file,(id - 1)* sizeof(employee),SEEK_SET);
+        fwrite(&empty,sizeof(employee),1,file);
+    }
     fclose(file);
 }
 
