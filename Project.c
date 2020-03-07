@@ -50,7 +50,7 @@ int main(){
 //Block Code of Function
 void AddEmployee(int x){
     FILE *file;
-    file=fopen("Employee.txt","a");
+    file=fopen("DBemployee.txt","a");
     for(int i=0;i<x;i++){
         printf(">>>>Employee %d<<<<\n",i+1);
         printf("\tFirst name: "); scanf("%s",&info[i].firstname);
@@ -75,7 +75,7 @@ void DisplayInfo(){
     printf("------------------------------------------------------------------------------------------------------------\n");
     printf("Name\t\tID\tBirth's year\tTelephone\tStart Date\tPosition\tStatus\tEmail\n");
     printf("------------------------------------------------------------------------------------------------------------\n");
-    file=fopen("Employee.txt","r");
+    file=fopen("DBemployee.txt","r");
         while(fscanf(file,"%s %s %s %s %s %s %s %s %s %s %s",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9],str[10])!=EOF){
             printf("%s\t%s\t%s\t%s\t\t%s\t%s/%s/%s\t%s\t\t%s\t%s\n",str[0],str[1],str[2],str[3],str[4],str[5],str[6],str[7],str[8],str[9],str[10]);
         }
